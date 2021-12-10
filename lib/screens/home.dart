@@ -30,10 +30,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       'Index 1: Calendar',
       style: optionStyle,
     ),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
+    // Text(
+    //   'Index 2: School',
+    //   style: optionStyle,
+    // ),
     Text(
       'Index 3: School',
       style: optionStyle,
@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   void didUpdateWidget(old) {
     super.didUpdateWidget(old);
 
-    print('aaa');
+    // print('aaa');
   }
 
   @override
@@ -182,7 +182,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           icon: Icon(Icons.today),
           label: 'Calendar',
         ),
-        BottomNavigationBarItem(icon: Icon(Icons.info), label: 'Info'),
+        // BottomNavigationBarItem(icon: Icon(Icons.info), label: 'Info'),
         BottomNavigationBarItem(icon: Icon(Icons.rate_review), label: 'Notes')
       ],
       currentIndex: _selectedIndex,
@@ -196,11 +196,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     final String? name = await _asyncInputDialog(context);
     // setState(() {});
 
-      tabController!.animateTo(0);
-
-    }
-
-
+    tabController!.animateTo(0);
+  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -224,7 +221,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   }
 
   void setIndex(index) {
-    print(lastTab);
+    // print(lastTab);
   }
 
   Widget _buildBody(DocumentSnapshot snapshot) {
@@ -232,8 +229,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         ? snapshot["records"].reversed.toList()
         : [];
 
-    tabController = new TabController(
-        vsync: this, length: records.length);
+    tabController = new TabController(vsync: this, length: records.length);
     // if (records.length > 2) {
     //   tabController!.animateTo(1);
     //   Future.delayed(const Duration(seconds: 2), () {
@@ -278,7 +274,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   }
 
   List<Widget> elementsContainer(int selectedPos, records) {
-    print(records);
     var calculator = Calculator(weatherData: weather);
     List<Widget> result;
     switch (_selectedIndex) {
@@ -298,19 +293,19 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         break;
       case 1:
         {
-          result = new List<Widget>.from(
-              records.map((data) => TableBasicsExample()));
+          result = new List<Widget>.from(records.map((data) {
+            var calculatorResult = calculator.getResult(data);
+            return TableEventsExample(
+              calculatorResult: calculatorResult.tips,
+              dates: calculatorResult.stages,
+              harvestdate: calculatorResult.harvestDate,
+            );
+          }).toList());
         }
-        break;
-      case 2:
-        {
-          result = new List<Widget>.from(
-              records.map((data) => TableBasicsExample()));
-          // result = new List<Widget>.from(
-          //     records.map((data) => StepperContainer(data, calculator.getResult(data), harvest: calculator.getResult(data).harvestDate,weather: weather)).toList());
-        }
+
         break; //Text(data['bbch'].toString())
-      case 3:
+
+      case 2:
         {
           result = new List<Widget>.from(records.map((data) => FeedbackForm(
               userId: widget.user.uid, farmName: data['name'].toString())));

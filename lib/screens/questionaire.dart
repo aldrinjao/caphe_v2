@@ -97,10 +97,14 @@ class QuestionairePageState extends State<QuestionairePage> {
                                           context,
                                           (Route<dynamic> route) =>
                                               route.isFirst);
+                                      print('==========================');
+                                      print(currentList.length);
+                                      print('===========================');
+
                                       addValue(
                                           kind,
                                           widget.name,
-                                          int.parse(currentList[index].value),
+                                          int.parse(currentList[index].value)+1,
                                           widget.location);
                                     } else {
                                       state = currentList[index].value;

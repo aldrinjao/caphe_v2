@@ -274,7 +274,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateM
         setState(() {
           _errorMessage = e.toString();
         });
-        print(e.toString());
+        // print(e.toString());
       }
     }
   }
@@ -306,7 +306,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateM
         setState(() {
           _errorMessage = e.toString();
         });
-        print(e.toString());
+        // print(e.toString());
       }
     }
   }

@@ -24,8 +24,8 @@ class _RootState extends State<Root> {
           }
           final user = snapshot.data;
           if (user != null) {
-            print("user is logged in");
-            print(user);
+            // print("user is logged in");
+            // print(user);
             return HomeScreen(user: snapshot.data as User);
           } else {
             return WelcomeScreen();
