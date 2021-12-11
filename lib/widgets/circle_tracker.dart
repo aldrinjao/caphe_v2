@@ -74,7 +74,7 @@ class _CircleTrackerState extends State<CircleTracker> {
           padding: const EdgeInsets.all(2.0),
           child: Center(
               child: Text(
-            'Estimated Harvest week of',
+            'Estimated Harvest Week',
             style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w300,

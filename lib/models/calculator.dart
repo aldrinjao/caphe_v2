@@ -11,7 +11,7 @@ class CalculationResult {
   Map<DateTime, List<dynamic>> events = {};
   Map<String, DateTime> stages = {};
 
-  late String todayStage;
+  late String todayStage ='harvest';
   late double targetBbch;
   late Set<String> finishedStages;
   List<String> tips = ['completed','completed','completed','completed'];
@@ -26,7 +26,7 @@ class Calculator {
 
   late int daysLeft;
   var harvestDate;
-  var stages = ['inflorescence', 'flowering', 'berry development', 'berry ripening'];
+  var stages = ['inflorescence', 'flowering', 'berry development', 'berry ripening','harvest'];
 
   Calculator({this.weatherData});
 
@@ -128,6 +128,9 @@ class Calculator {
       result.finishedStages.add(stage);
 
       if(stage == result.todayStage) {
+        print('======================');
+        print(result.todayStage);
+        print('======================');
         break;
       }
     }
